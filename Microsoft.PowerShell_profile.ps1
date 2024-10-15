@@ -10,8 +10,13 @@
 ## Secondary option for prompt using Oh My Posh
 # NERD FONT REQUIRED
 # Oh My Posh INSTALLATION REQUIRED
-oh-my-posh init pwsh --config ~/jandedobbeleer.omp.json | Invoke-Expression
+# oh-my-posh init pwsh --config ~/jandedobbeleer.omp.json | Invoke-Expression
 
+# Starship Invoke
+Invoke-Expression (&starship init powershell)
+
+# Zoxide Invoke
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
 ## Aliases
 
@@ -25,6 +30,9 @@ Set-Alias n notepad
 ## Functions
 function cd...  { Set-Location ..\.. }
 function cd.... { Set-Location ..\..\.. }
+function .. { z .. }
+function ... { z ..\.. }
+function .... { z ..\..\.. }
 function dirs
 {
     if ($args.Count -gt 0)
